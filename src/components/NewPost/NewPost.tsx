@@ -14,3 +14,5 @@ function NewPost() {
         </form>
     );
 }
+
+export default NewPost;
