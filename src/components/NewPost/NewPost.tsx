@@ -3,7 +3,7 @@ import classes from "./NewPost.module.css";
 interface NewPostProps {
     onBodyChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     enteredBody: string;
-    onAuthorChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onAuthorChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 function NewPost(props: NewPostProps) {
