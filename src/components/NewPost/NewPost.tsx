@@ -3,6 +3,7 @@ import classes from "./NewPost.module.css";
 interface NewPostProps {
     onBodyChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     enteredBody: string;
+    onAuthorChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function NewPost(props: NewPostProps) {
@@ -12,10 +13,15 @@ function NewPost(props: NewPostProps) {
                 <label htmlFor="body">Text</label>
                 <textarea id="body" rows={3} onChange={props.onBodyChange} />
             </p>
-            <p>{props.enteredBody}</p>
+            {/* <p>{props.enteredBody}</p> */}
             <p>
                 <label htmlFor="name">Your name</label>
-                <input type="text" id="name" required />
+                <input
+                    type="text"
+                    id="name"
+                    required
+                    onChange={props.onAuthorChange}
+                />
             </p>
         </form>
     );
