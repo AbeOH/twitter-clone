@@ -7,16 +7,13 @@ import Modal from "../Modal/Modal";
 
 function PostList() {
     const [modalIsVisible, setModalIsVisible] = useState(true);
-
     const [enteredBody, setEnteredBody] = useState("");
     const [enteredAuthor, setEnteredAuthor] = useState("");
 
-    function hideModalHandler() {
+    function hideModalHandler(event: React.MouseEvent<HTMLButtonElement>) {
         console.log("hideModalHandler is being called");
         setModalIsVisible(false);
     }
-
-    console.log("modalIsVisible:", modalIsVisible);
 
     function showModalHandler() {
         setModalIsVisible(true);
@@ -34,9 +31,11 @@ function PostList() {
 
     return (
         <>
-            <button onClick={hideModalHandler}>X</button>
+            <button className={classes.closeButton} onClick={hideModalHandler}>
+                X
+            </button>
 
-            <Modal isOpen={modalIsVisible} onClose={showModalHandler}>
+            <Modal isOpen={modalIsVisible} onClick={showModalHandler}>
                 <NewPost
                     onBodyChange={changeBodyHandler}
                     onAuthorChange={changeAuthorHandler}
