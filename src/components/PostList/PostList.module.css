@@ -8,3 +8,15 @@
     grid-template-columns: repeat(3, 30%);
     justify-content: center;
 }
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+}

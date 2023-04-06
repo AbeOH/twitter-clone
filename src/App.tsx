@@ -3,12 +3,16 @@
 // import './App.css'
 // import Post from "./components/post/post";
 import PostList from "./components/PostList/PostList";
+import MainHeader from "./components/MainHeader/MainHeader";
 
 function App() {
     return (
-        <main>
-            <PostList />
-        </main>
+        <>
+            <MainHeader />
+            <main>
+                <PostList />
+            </main>
+        </>
     );
 }
 
