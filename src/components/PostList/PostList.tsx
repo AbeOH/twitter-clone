@@ -5,7 +5,12 @@ import classes from "./PostList.module.css";
 import NewPost from "../NewPost/NewPost";
 import Modal from "../Modal/Modal";
 
-function PostList({ isPosting, onStopPosting }) {
+interface PostListProps {
+    isPosting: boolean;
+    onStopPosting: () => void;
+}
+
+function PostList({ isPosting, onStopPosting }: PostListProps) {
     const [enteredBody, setEnteredBody] = useState("");
     const [enteredAuthor, setEnteredAuthor] = useState("");
 
