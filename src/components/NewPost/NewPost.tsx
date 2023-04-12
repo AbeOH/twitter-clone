@@ -6,7 +6,7 @@ interface NewPostProps {
     onAuthorChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-function NewPost(props: NewPostProps) {
+function NewPost({onBodyChange, } NewPostProps) {
     return (
         <form className={classes.form}>
             <p>
@@ -22,6 +22,10 @@ function NewPost(props: NewPostProps) {
                     required
                     onChange={props.onAuthorChange}
                 />
+            </p>
+            <p className={classes.actions}>
+                <button type="button"> Cancel</button>
+                <button> Submit</button>
             </p>
         </form>
     );
