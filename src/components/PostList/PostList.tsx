@@ -13,6 +13,7 @@ interface PostListProps {
 function PostList({ isPosting, onStopPosting }: PostListProps) {
     const [enteredBody, setEnteredBody] = useState("");
     const [enteredAuthor, setEnteredAuthor] = useState("");
+    const [modalIsVisible, setModalIsVisible] = useState(false);
 
     function changeBodyHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setEnteredBody(event.target.value);
@@ -24,13 +25,22 @@ function PostList({ isPosting, onStopPosting }: PostListProps) {
         setEnteredAuthor(event.target.value);
     }
 
+    function showModalHandler() {
+        setModalIsVisible(true);
+    }
+
+    function hideModalHandler(event: React.MouseEvent<HTMLButtonElement>) {
+        console.log("hideModalHandler is being called");
+        onStopPosting();
+    }
+
     return (
         <>
             <button className={classes.closeButton} onClick={hideModalHandler}>
                 X
             </button>
             {isPosting && (
-                <Modal onClose={onStopPosting}>
+                <Modal isOpen={modalIsVisible} onClose={onStopPosting}>
                     {/* isOpen={modalIsVisible} onClick={showModalHandler} */}
                     <NewPost
                         onBodyChange={changeBodyHandler}
