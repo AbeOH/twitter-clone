@@ -6,13 +6,13 @@ interface ModalProps {
     onClose: () => void;
     // OnClick: () => void;
 }
-function Modal(props: ModalProps) {
+function Modal({ children, isOpen, onClose }: ModalProps) {
     return (
         <>
-            <div className={classes.backdrop} onClick={props.onClose} />
-            {props.isOpen && (
+            <div className={classes.backdrop} onClick={onClose} />
+            {isOpen && (
                 <dialog open className={classes.modal}>
-                    {props.children}
+                    {children}
                 </dialog>
             )}
         </>
