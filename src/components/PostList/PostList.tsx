@@ -39,7 +39,9 @@ function PostList({ isPosting, onStopPosting, postData }: PostListProps) {
             )}
 
             <ul className={classes.posts}>
-                <Post richPerson="Jeff Bezos" companyName="Amazon" />
+                {posts.map((post) => (
+                    <Post author={post.author} body={post.body} />
+                ))}
             </ul>
         </>
     );
