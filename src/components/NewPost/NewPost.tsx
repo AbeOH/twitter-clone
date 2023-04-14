@@ -2,18 +2,11 @@ import classes from "./NewPost.module.css";
 import { useState } from "react";
 
 interface NewPostProps {
-    // onBodyChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-    // enteredBody: string;
-    // onAuthorChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     onCancel: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    // onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    onAddPost: (postData: { body: string; author: string }) => void;
 }
 
-function NewPost({
-    // enteredBody,
-    onCancel,
-}: // onChange,
-NewPostProps) {
+function NewPost({ onCancel, onAddPost }: NewPostProps) {
     const [enteredBody, setEnteredBody] = useState("");
     const [enteredAuthor, setEnteredAuthor] = useState("");
 
@@ -35,7 +28,7 @@ NewPostProps) {
             body: enteredBody,
             author: enteredAuthor,
         };
-        console.log(postData);
+        onAddPost(postData);
         onCancel();
     }
 

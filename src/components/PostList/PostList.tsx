@@ -5,41 +5,40 @@ import classes from "./PostList.module.css";
 import NewPost from "../NewPost/NewPost";
 import Modal from "../Modal/Modal";
 
+interface Post {
+    body: string;
+    author: string;
+}
+
 interface PostListProps {
     isPosting: boolean;
     onStopPosting: () => void;
+    postData: {
+        body: string;
+        author: string;
+        existingPosts: [];
+    };
 }
 
-function PostList({ isPosting, onStopPosting }: PostListProps) {
-    const [enteredBody, setEnteredBody] = useState("");
-    const [enteredAuthor, setEnteredAuthor] = useState("");
+function PostList({ isPosting, onStopPosting, postData }: PostListProps) {
+    const [posts, setPosts] = useState<Post[]>([]);
 
-    function changeBodyHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
-        setEnteredBody(event.target.value);
+    function addPostHandler(postData: Post) {
+        setPosts((existingPosts) => [postData, ...existingPosts]);
     }
-
-    function changeAuthorHandler(
-        event: React.ChangeEvent<HTMLTextAreaElement>
-    ) {
-        setEnteredAuthor(event.target.value);
-    }
-
     return (
         <>
             {isPosting && (
                 <Modal isOpen={isPosting} onClose={onStopPosting}>
-                    {/* isOpen={modalIsVisible} onClick={showModalHandler} */}
                     <NewPost
-                        onBodyChange={changeBodyHandler}
-                        onAuthorChange={changeAuthorHandler}
-                        enteredBody={enteredBody}
+                        // enteredBody={enteredBody}
                         onCancel={onStopPosting}
+                        onAddPost={addPostHandler}
                     />
                 </Modal>
             )}
 
             <ul className={classes.posts}>
-                <Post richPerson={enteredAuthor} companyName={enteredBody} />
                 <Post richPerson="Jeff Bezos" companyName="Amazon" />
             </ul>
         </>
