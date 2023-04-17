@@ -16,7 +16,7 @@ interface PostListProps {
     postData: {
         body: string;
         author: string;
-        existingPosts: [];
+        existingPosts: Post[];
     };
 }
 

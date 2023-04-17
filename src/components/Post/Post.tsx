@@ -1,15 +1,15 @@
 import classes from "./post.module.css";
 
 interface PostProps {
-    richPerson: string;
-    companyName: string;
+    author: string;
+    body: string;
 }
 
 function Post(PostProps: PostProps) {
     return (
         <div className={classes.post}>
-            <p className={classes.richPerson}> {PostProps.richPerson}</p>
-            <p className={classes.companyName}>{PostProps.companyName} </p>
+            <p className={classes.author}> {PostProps.author}</p>
+            <p className={classes.body}>{PostProps.body} </p>
         </div>
     );
 }
