@@ -34,6 +34,7 @@ function PostList({ isPosting, onStopPosting, postData }: PostListProps) {
             console.log(resData);
             setPosts(resData.posts);
         }
+        fetchPosts();
     }, []);
 
     function addPostHandler(postData: Post) {
