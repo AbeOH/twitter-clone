@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Post from "../Post/Post";
 import classes from "./PostList.module.css";
@@ -21,9 +21,32 @@ interface PostListProps {
 }
 
 function PostList({ isPosting, onStopPosting, postData }: PostListProps) {
+    // fetch("http://localhost:8080/posts").then(response => response.json().then(data => {
+    //     console.log(data);
+    //     setPosts(data.posts);
+    // }));
     const [posts, setPosts] = useState<Post[]>([]);
 
+    useEffect(() => {
+        async function fetchPosts() {
+            const response = await fetch("http://localhost:8080/posts");
+            const resData = await response.json();
+            console.log(resData);
+            setPosts(resData.posts);
+        }
+    }, []);
+
     function addPostHandler(postData: Post) {
+        fetch("http://localhost:8080/posts", {
+            method: "POST",
+            body: JSON.stringify(postData),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            // }).then(() => {
+            //     console.log('New post added!');
+        });
+
         setPosts((existingPosts) => [postData, ...existingPosts]);
     }
     return (
